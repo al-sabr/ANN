@@ -58,11 +58,13 @@ configure_file(
   ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
   @ONLY
 )
+#[[
 configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}ConfigVersion.cmake.in
   ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
   @ONLY
 )
+]]
 
 export(EXPORT ${PROJECT_NAME}_TARGETS
   FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Targets.cmake
