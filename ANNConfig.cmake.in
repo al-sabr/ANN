@@ -1,9 +1,3 @@
 set(ANN_INCLUDE_DIR @ANN_SOURCE_DIR@/include)
 set(ANN_INCLUDE_DIRS ${ANN_INCLUDE_DIR})
 set(ANN_LIBRARIES ANN)
-
-#[[
-if(NOT TARGET ANN)
-  include(@ANN_BINARY_DIR@/ANNExports.cmake)
-endif()
-]]
