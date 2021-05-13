@@ -30,16 +30,22 @@ set(ANN_SOURCES
   src/perf.cpp
 )
 
-add_library(ann SHARED ${ANN_HEADERS} ${ANN_SOURCES})
-target_include_directories(ann
+if (BUILD_SHARED_LIBS)
+  set(LIBRARY_MODE SHARED)
+else()
+  set(LIBRARY_MODE STATIC)
+endif()
+
+add_library(ANN ${LIBRARY_MODE} ${ANN_HEADERS} ${ANN_SOURCES})
+target_include_directories(ANN
   PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
          "$<INSTALL_INTERFACE:include>"
 )
-target_compile_definitions(ann PRIVATE $<$<PLATFORM_ID:Windows>:DLL_EXPORTS>)
-set_target_properties(ann PROPERTIES
+target_compile_definitions(ANN PRIVATE $<$<PLATFORM_ID:Windows>:DLL_EXPORTS>)
+set_target_properties(ANN PROPERTIES
                       SOVERSION ${${PROJECT_NAME}_VERSION})
 
-set(${PROJECT_NAME}_LIBRARIES ann)
+set(${PROJECT_NAME}_LIBRARIES ANN)
 
 # Install support
 
